@@ -5,7 +5,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 
 const toolbar = (props) => (
   <div className={classes.Main}>
-    <NavigationItems />
+    <NavigationItems userLogged={props.userLogged}/>
   </div>
 );
 

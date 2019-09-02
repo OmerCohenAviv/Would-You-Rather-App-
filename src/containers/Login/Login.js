@@ -5,7 +5,7 @@ import * as actions from '../../store/actions/index';
 
 class Login extends Component {
     state = {
-        currentUserID: '',     
+        currentUserID: '',
     };
 
     componentDidMount() {
@@ -14,16 +14,15 @@ class Login extends Component {
 
     changeSelectValueHandler = (event) => {
         const updatedCurrentUserID = event.target.value
-        this.setState({currentUserID: updatedCurrentUserID})
+        this.setState({ currentUserID: updatedCurrentUserID })
     };
     onLoginHandler = () => {
         const currentUserID = [...this.state.currentUserID].join('');
-        this.props.onLoginUser(currentUserID);  
+        this.props.onLoginUser(currentUserID);
     };
 
     render() {
         const usersOptions = Object.values(this.props.users).map(user => {
-            
             return <option key={user.id} value={user.id}> {user.name} </option>
         });
         let userDisplay = (

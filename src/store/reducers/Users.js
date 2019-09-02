@@ -1,10 +1,10 @@
 import * as actionTypes from '../actions/ActionTypes';
 
 const initalState = {
-    allUsers: [],
-    currentUser: '',
+    allUsers: '',
+    currentUser: null,
     loading: false,
-    error: ''
+    error: null
 };
 
 const usersReducer = (state = initalState, action) => {

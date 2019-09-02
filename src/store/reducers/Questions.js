@@ -2,9 +2,9 @@
 import * as actionTypes from '.././actions/ActionTypes';
 
 const initalState = {
-    allQuestions: [],
+    allQuestions: null,
     loading: false,
-    error: ''
+    error: null
 }
 
 const questionReducer = (state = initalState, action) => {
