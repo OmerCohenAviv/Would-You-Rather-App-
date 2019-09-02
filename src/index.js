@@ -4,22 +4,27 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import {createStore, applyMiddleware, combineReducers,compose} from 'redux'
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import { Provider } from 'react-redux';
+import questionReducer from './store/reducers/Questions';
+import usersReducer from './store/reducers/Users';
 import thunk from 'redux-thunk'
 
+const rootReducer = combineReducers({
+    home: questionReducer,
+    users: usersReducer
+});
 
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose
 
-// const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__  : null || compose
-
-// const store = createStore( rootReducer, composeEnhancers( applyMiddleware(thunk) ) );
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 const app = (
-    // <Provider store = { store } >
+    <Provider store={store} >
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    // </Provider>
+    </Provider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

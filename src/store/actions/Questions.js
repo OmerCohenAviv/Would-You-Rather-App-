@@ -1,8 +1,6 @@
 import * as actionTypes from './ActionTypes';
 import * as fakeData from '../../Data';
 
-
-
 const allQuestionsStart = () => {
     return { type: actionTypes.ALL_QUESTIONS_START }
 };
@@ -16,7 +14,7 @@ const allQuestionsFail = (error) => {
 };
 
 export const fetchQuestionsAPI = () => {
-    dispatch => {
+    return dispatch => {
         dispatch(allQuestionsStart())
         fakeData._getQuestions()
         .then(fetchedQuestions =>  dispatch( allQuestionsSuccess( fetchedQuestions ))

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import NavigationItem from './NavigationItem/NavigationItem';
 import classes from './NavigationItems.module.css'
