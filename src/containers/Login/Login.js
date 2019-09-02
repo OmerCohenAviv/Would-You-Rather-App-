@@ -11,9 +11,9 @@ class Login extends Component {
     };
 
     componentDidMount() {
-        this.props.currentUser === null
-            ? this.setState({ loggedIn: false, currentUserID: '' })
-            : this.props.onGetAllUsers();
+        // this.props.currentUser === null
+        //     ? this.setState({ loggedIn: false, currentUserID: '' })
+        //     : this.props.onGetAllUsers();
     };
     //Handlers
     changeSelectValueHandler = (event) => {

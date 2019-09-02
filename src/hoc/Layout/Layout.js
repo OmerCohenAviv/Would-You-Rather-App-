@@ -7,7 +7,7 @@ class Layout extends Component {
     render() {
         return (
             <Fragment>
-            <Toolbar userLogged = {this.props.userLogged}/>
+            <Toolbar userLogged = {this.props.userLogged} currentUser={this.props.currentUser}/>
             <main className={classes.Layout}>
                 {this.props.children}
             </main>
@@ -17,6 +17,7 @@ class Layout extends Component {
 };
 const mapStateToProps = state => {
     return {
+        currentUser: state.users.currentUser,
         userLogged: state.users.currentUser !== null
     }
 }

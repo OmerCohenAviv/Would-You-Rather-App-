@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import './App.css';
 import Layout from './hoc/Layout/Layout';
 import { Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux';
 import Home from './containers/Home/Home';
 import LeaderBoard from './containers/LeaderBoard/LeaderBoard';
 import NewQuestion from './containers/NewQuestion/NewQuestion';
 import Login from './containers/Login/Login';
 import Logout from './containers/Logout/Logout';
+import * as actions from './store/actions/index';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.onGetAllUsers();
+    this.props.onGetAllQuestions();
+  }
 
   render() {
     let routes = (
@@ -30,9 +36,13 @@ class App extends Component {
     );
   };
 };
+const mapDispatchToProps = dispatch => {
+  return {
+    onGetAllUsers: () =>     dispatch( actions.getAllUsersAPI()    ),
+    onGetAllQuestions: () => dispatch( actions.fetchQuestionsAPI() )
+  }
+}
 
-
-
-export default App;
+export default connect(null, mapDispatchToProps)(App);
 
 

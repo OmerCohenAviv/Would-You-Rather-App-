@@ -1,4 +1,4 @@
-import dragon from './assets/Avatars/TryingSomtings.png'
+import dragon from './assets/Avatar/AvatarPics/TryingSomtings.png'
 let users = {
     sarahedo: {
       id: 'sarahedo',

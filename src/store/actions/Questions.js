@@ -6,18 +6,18 @@ const allQuestionsStart = () => {
 };
 
 const allQuestionsSuccess = (questions) => {
-    return { type: actionTypes.ALL_QUESTIONS_SUCCESS, questions }
+    return { type: actionTypes.ALL_QUESTIONS_SUCCESS, questions: questions }
 };
 
 const allQuestionsFail = (error) => {
-    return { type: actionTypes.ALL_QUESTIONS_FAIL, error }
+    return { type: actionTypes.ALL_QUESTIONS_FAIL, error: error }
 };
 
 export const fetchQuestionsAPI = () => {
     return dispatch => {
-        dispatch(allQuestionsStart())
+        dispatch( allQuestionsStart() ) 
         fakeData._getQuestions()
-        .then(fetchedQuestions =>  dispatch( allQuestionsSuccess( fetchedQuestions ))
-        .catch(error => allQuestionsFail( error )));
+        .then(fetchedQuestions => dispatch( allQuestionsSuccess(fetchedQuestions) ))
+        .catch(error => dispatch( allQuestionsFail(error) )) 
     };
 };

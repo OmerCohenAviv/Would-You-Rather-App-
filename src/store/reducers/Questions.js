@@ -1,5 +1,6 @@
 
 import * as actionTypes from '.././actions/ActionTypes';
+import { updateObject } from '../../Utility/Functions'
 
 const initalState = {
     allQuestions: null,
@@ -9,16 +10,14 @@ const initalState = {
 
 const questionReducer = (state = initalState, action) => {
     switch (action.type) {
-        case (action.type === actionTypes.ALL_QUESTIONS_START): {
-            return { ...state, ...{ loading: true} }
-        }
-        
-        case (action.type === actionTypes.ALL_QUESTIONS_SUCCESS): {
+        case ( actionTypes.ALL_QUESTIONS_START): { return updateObject( state, {loading: true} ) }
+
+        case ( actionTypes.ALL_QUESTIONS_SUCCESS): {
             const updatedAllQuestions = [...action.questions];
             return {...state, ...{allQuestions: updatedAllQuestions} }
         }
 
-        case (action.type === actionTypes.ALL_QUESTIONS_FAIL): {
+        case ( actionTypes.ALL_QUESTIONS_FAIL): {
             return {...state, ...{error: action.error}}
         }
 
