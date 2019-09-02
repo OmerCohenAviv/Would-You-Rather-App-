@@ -5,3 +5,6 @@ export const ALL_QUESTIONS_FAIL    = 'ALL_QUESTIONS_FAIL';
 export const ALL_USERS_START =   'ALL_USERS_START';
 export const ALL_USERS_SUCCESS = 'ALL_USERS_SUCCESS';
 export const ALL_USERS_FAIL =    'ALL_USERS_FAIL';
+
+
+export const LOGIN_USER = 'LOGIN_USER'

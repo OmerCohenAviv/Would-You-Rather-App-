@@ -2,11 +2,11 @@ import * as actionTypes from './ActionTypes';
 import * as fakeData from '../../Data';
 
 const allUsersStart = () => {
-    return { type: actionTypes.ALL_QUESTIONS_START };
+    return { type: actionTypes.ALL_USERS_START };
 };
 
 const allUsersSuccess = (users) => {
-    return {type: actionTypes.ALL_USERS_SUCCESS, users}
+    return {type: actionTypes.ALL_USERS_SUCCESS, users: Object.values(users) }
 };
 
 const allUsersFail = (error) => {
@@ -21,3 +21,9 @@ export const getAllUsersAPI = () => {
         .catch(error => dispatch( allUsersFail(error) ))     
     };
 };
+
+export const onLoginUser = (userID) => {
+    return { type: actionTypes.LOGIN_USER, userID: userID}
+};
+
+

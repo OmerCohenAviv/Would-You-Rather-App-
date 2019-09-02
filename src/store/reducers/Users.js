@@ -1,22 +1,34 @@
 import * as actionTypes from '../actions/ActionTypes';
 
 const initalState = {
-    users: [],
+    allUsers: [],
+    currentUser: '',
     loading: false,
     error: ''
 };
 
 const usersReducer = (state = initalState, action) => {
     switch(action.type) {
-        case(actionTypes.ALL_QUESTIONS_START): {
+        
+        case(actionTypes.ALL_USERS_START): {
             return {...state, ...{loading: true}}
         }
-        case(actionTypes.ALL_QUESTIONS_SUCCESS): {
-            return {...state, ...{users: action.users, loading: false}}
+
+        case(actionTypes.ALL_USERS_SUCCESS): {
+
+            return {...state, ...{allUsers: action.users, loading: false}}
         }
-        case(actionTypes.ALL_QUESTIONS_FAIL): {
+
+        case(actionTypes.ALL_USERS_FAIL): {
             return {...state, ...{error: action.error, loading: false}}
 
+        }
+
+        case(actionTypes.LOGIN_USER): {
+            const currentUser = state.allUsers.filter(user => {
+               return user.id === action.userID
+            })
+            return {...state, ...{currentUser: currentUser}}
         }
 
         default: return state;
