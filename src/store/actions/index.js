@@ -1,4 +1,5 @@
 export {
 getAllUsersAPI,
-onLoginUser
+onLoginUser,
+onLogoutUser
 } from './Users';

@@ -6,6 +6,7 @@ import Home from './containers/Home/Home';
 import LeaderBoard from './containers/LeaderBoard/LeaderBoard';
 import NewQuestion from './containers/NewQuestion/NewQuestion';
 import Login from './containers/Login/Login';
+import Logout from './containers/Logout/Logout';
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
         <Route path='/leaderboards' component={LeaderBoard} />
         <Route path='/newquestion' component={NewQuestion} />
         <Route path='/login' component={Login} />
+        <Route path='/logout' component={Logout} />
         <Route path='/' component={Home} />
       </Switch>
     );

@@ -8,3 +8,4 @@ export const ALL_USERS_FAIL =    'ALL_USERS_FAIL';
 
 
 export const LOGIN_USER = 'LOGIN_USER'
+export const LOGOUT_USER = 'LOGOUT_USER'

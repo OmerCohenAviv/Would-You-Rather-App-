@@ -26,4 +26,8 @@ export const onLoginUser = (userID) => {
     return { type: actionTypes.LOGIN_USER, userID: userID}
 };
 
+export const onLogoutUser = () => {
+    return { type: actionTypes.LOGOUT_USER }
+}
+
 
