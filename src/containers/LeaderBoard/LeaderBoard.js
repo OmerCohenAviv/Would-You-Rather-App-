@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class LeaderBoard extends Componenet {
+class LeaderBoard extends Component {
     render() {
         return (
             <div>UnAnswered Questions.</div>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class NewQuestion extends Componenet {
+class NewQuestion extends Component {
     render() {
         return (
             <div></div>
