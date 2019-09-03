@@ -10,17 +10,16 @@ const initalState = {
 
 const questionReducer = (state = initalState, action) => {
     switch (action.type) {
-        case ( actionTypes.ALL_QUESTIONS_START): { return updateObject( state, {loading: true} ) }
-
-        case ( actionTypes.ALL_QUESTIONS_SUCCESS): {
+        case (actionTypes.ALL_QUESTIONS_START): {
+            return updateObject(state, { loading: true })
+        }
+        case (actionTypes.ALL_QUESTIONS_SUCCESS): {
             const updatedAllQuestions = [...action.questions];
-            return {...state, ...{allQuestions: updatedAllQuestions} }
+            return updateObject(state, { allQuestions: updatedAllQuestions, loading: false })
         }
-
-        case ( actionTypes.ALL_QUESTIONS_FAIL): {
-            return {...state, ...{error: action.error}}
+        case (actionTypes.ALL_QUESTIONS_FAIL): {
+            return updateObject(state, { error: error, loading: false })
         }
-
         default: { return state }
     };
 };
