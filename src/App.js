@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     let routes = (
       <Switch>
-        <Route path='/leaderboards' component={LeaderBoard} />
+        <Route path='/leaderboard' component={LeaderBoard} />
         <Route path='/newquestion' component={NewQuestion} />
         <Route path='/login' component={Login} />
         <Route path='/logout' component={Logout} />
