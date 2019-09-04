@@ -26,7 +26,6 @@ class Home extends Component {
         }
     }
     render() {
-        console.log(this.props.currentUser)
         let display = 'Please log in'
         if  (this.props.currentUser) {
             display = [];
