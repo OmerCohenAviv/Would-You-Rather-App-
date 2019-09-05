@@ -27,14 +27,32 @@ const createQuestionSuccess = (question) => {
 };
 const createQuestionFail = (error) => {
     return {type: actionTypes.CREATE_QUESTION_FAIL}
-}
-
+};
 export const createQuestionAPI = (question) => {
     return dispatch => {
         dispatch (createQuestionStart())
         fakeData._saveQuestion(question)
-        .then( res => dispatch( createQuestionSuccess(res) ))
+        .then(res => dispatch( createQuestionSuccess(res) ))
         .catch(err => dispatch( createQuestionFail(err) ) 
         );
+    };
+};
+
+
+const saveAnswerStart = () => {
+    return {type: actionTypes.SAVE_ANSWER_START}
+};
+const saveAnswerSuccess = (res) => {
+    return {type: actionTypes.SAVE_ANSWER_SUCCESS, response: res}
+};
+const saveAnswerFail = (err) => {
+    return {type: actionTypes.SAVE_ANSWER_FAIL, error: err}
+};
+export const saveQuestionAnswer = (questionData) => {
+    return dispatch => {
+        dispatch( saveAnswerStart() )
+        fakeData._saveQuestionAnswer(questionData)
+        .then(res => dispatch( saveAnswerSuccess (res)) )
+        .catch(err => dispatch (saveAnswerFail(err)) )
     };
 };

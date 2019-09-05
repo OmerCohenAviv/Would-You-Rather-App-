@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 class LeaderBoard extends Component {
     render() {
-        console.log(this.props.allUsers)
         const allUsers = [...this.props.allUsers]
         let displayUsers = []
         for (let user of allUsers) {

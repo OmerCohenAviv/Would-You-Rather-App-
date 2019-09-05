@@ -21,6 +21,13 @@ const questionReducer = (state = initalState, action) => {
             console.log(action.error)
             return updateObject(state, { error: action.error, loading: false })
         }
+
+        case (actionTypes.SAVE_ANSWER_SUCCESS): {
+            return state;
+        }
+        case (actionTypes.SAVE_ANSWER_FAIL): {
+            return state;
+        }
         default: { return state }
     };
 };

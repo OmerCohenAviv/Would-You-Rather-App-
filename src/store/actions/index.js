@@ -6,6 +6,7 @@ onLogoutUser
 
 
 export {
+    saveQuestionAnswer,
     fetchQuestionsAPI,
     createQuestionAPI
 } from './Questions'
