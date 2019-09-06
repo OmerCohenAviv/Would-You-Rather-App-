@@ -2,7 +2,6 @@ import React from 'react';
 
 const options = (props) => {
     const radios = document.getElementsByName(`${props.questionID}`);
-    console.log(props.questionID)
     let checkedRadio = ''
     for (var i = 0, length = radios.length; i < length; i++) {
         if (radios[i].checked) {
@@ -10,7 +9,6 @@ const options = (props) => {
             break;
         };
     };
-    console.log(props)
     return (
         <form onSubmit={(event) => props.answerQuestion(event, checkedRadio, props.questionID)}  >
             <p>

@@ -2,35 +2,24 @@ import React, { Component } from 'react';
 
 import * as actions from '../../store/actions/index';
 import HomeComponent from '../../components/Question/Question';
+import { setQuestions } from '../../Utility/Functions';
 import { connect } from 'react-redux';
+
 
 class Home extends Component {
     state = {
         notAnsweredQuestions: [],
+        answeredQuestionsUser: [],
         selectedOption: 'optionOne'
     };
     componentDidMount() {
-        this.props.onGetAllQuestions();
-        let notAnsweredQuestions = ''
-        if (this.props.currentUser) {
-            const answeredQuestions = Object.keys(this.props.currentUser.answers);
-            notAnsweredQuestions = this.props.allQuestions.filter(question => {
-                let returnedValue = false
-                for (let answer of answeredQuestions) {
-                    if (answer === question.id) {
-                        returnedValue = true
-                        break;
-                    }
-                }
-                return !returnedValue;
-            });
-            this.setState({ notAnsweredQuestions: notAnsweredQuestions })
+        if(this.props.currentUser) {
+            const { notAnsweredQuestions, answeredQuestionsUser } = setQuestions(this.props.currentUser.answers, this.props.allQuestions)
+            this.setState({notAnsweredQuestions:notAnsweredQuestions,answeredQuestionsUser: answeredQuestionsUser })
         };
     };
+
     answerQuestionHandler = (event, answer, qID) => {
-        console.log(event.target.value)
-        console.log(answer)
-        console.log(this.props.currentUser.id)
         event.preventDefault();
         const questionData = {
             authedUser: this.props.currentUser.id,
@@ -38,15 +27,16 @@ class Home extends Component {
             answer: answer
         };
         this.props.onSavingAnswer(questionData)
+  
+    };
 
-    }
     optionChangeHandler = (event) => {
-        this.setState({selectedOption: event.target.value})
+        this.setState({ selectedOption: event.target.value })
     }
 
     render() {
         let display = 'Please log in'
-        if (this.props.currentUser && this.props.allQuestions ) {
+        if (this.props.currentUser && this.props.allQuestions) {
             display = [];
             for (let question of this.state.notAnsweredQuestions) {
                 display.push(question)
@@ -54,8 +44,8 @@ class Home extends Component {
             display = display.map(
                 quest => <HomeComponent
                     optionChange={this.optionChangeHandler}
-                    selectedOption = {this.state.selectedOption}
-                    answerQuestion = {(event, answer, questionID) => this.answerQuestionHandler(event, answer, questionID)}
+                    selectedOption={this.state.selectedOption}
+                    answerQuestion={(event, answer, questionID) => this.answerQuestionHandler(event, answer, questionID)}
                     key={quest.id}
                     question={quest}
                 />
@@ -79,8 +69,9 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        onSavingAnswer: (questionData) => dispatch(actions.saveQuestionAnswer(questionData) ),
-        onGetAllQuestions: () => dispatch(actions.fetchQuestionsAPI())
+
+        onSavingAnswer: (questionData) => dispatch(actions.saveQuestionAnswer(questionData)),
+        onGetAllQuestions: () => dispatch(actions.fetchQuestionsAPI()),
     };
 };
 

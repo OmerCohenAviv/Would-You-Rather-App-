@@ -52,7 +52,8 @@ export const saveQuestionAnswer = (questionData) => {
     return dispatch => {
         dispatch( saveAnswerStart() )
         fakeData._saveQuestionAnswer(questionData)
-        .then(res => dispatch( saveAnswerSuccess (res)) )
-        .catch(err => dispatch (saveAnswerFail(err)) )
+        fakeData._getQuestions()
+        .then(res => dispatch( fetchQuestionsAPI() ))
+        .catch(err => dispatch( saveAnswerFail(err) ) )
     };
 };
